@@ -5,13 +5,17 @@ const app = express();
 const mongoose = require('mongoose');
 ///// import notes model
 const Notes = require('./models/notes.js')
+///////// set port
 const port = process.env.PORT || 3000;
 require('dotenv').config();
 const DBURL = process.env.MONGODB_URI;
 //////// Import controllers
 const notesController = require('./controllers/notes.js');
+// const usersController = require('./controllers/users.js')
 ////// Import Method Override
 const methodOverride = require('method-override');
+//////// set bcrypt
+const bcrypt = require('bcrypt')
 
 ////// Database Connection
 mongoose.connect(DBURL, {useNewUrlParser: true, useUnifiedTopology: true}, (err) =>{
@@ -31,6 +35,7 @@ app.use(methodOverride('_method'));
 
 /////controllers
 app.use('/', notesController);
+// app.use('/users', usersController);
 
 
 
