@@ -7,7 +7,7 @@ require('dotenv').config();
 const DBURL = process.env.MONGODB_URI;
 
 ////// Database Connection
-mongoose.connect(DBURL, {}, (err) =>{
+mongoose.connect(DBURL, {useNewUrlParser: true, useUnifiedTopology: true}, (err) =>{
     console.log(err? err : 'connected')
 })
 
@@ -15,10 +15,13 @@ mongoose.connect(DBURL, {}, (err) =>{
 ////// Middleware
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
+app.set('view_engine', 'jsx');
+app.engine('jsx', require('express-react-views').engine());
+
 
 ////// Routes
 app.get('/', (req, res) =>{
-    res.send('Hello World')
+    res.render('Index');
 })
 //////Listener
 app.listen(port, ()=>{
