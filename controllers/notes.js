@@ -37,5 +37,21 @@ notesController.get('/:id', (req, res) =>{
     })
 })
 
+////// Edit Route
+notesController.get('/:id/edit', (req, res) =>{
+    Notes.findById({_id: req.params.id}, (err, note) =>{
+        res.render('Edit', {
+            note: note
+        })
+    })
+})
+
+/////// Update Route
+notesController.put('/:id/edit', (req, res) =>{
+    Notes.findByIdAndUpdate(req.params.id, req.body, (err, data) =>{
+        res.redirect('/');
+    })
+})
+
 
 module.exports = notesController;

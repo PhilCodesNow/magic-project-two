@@ -10,6 +10,8 @@ require('dotenv').config();
 const DBURL = process.env.MONGODB_URI;
 //////// Import controllers
 const notesController = require('./controllers/notes.js');
+////// Import Method Override
+const methodOverride = require('method-override');
 
 ////// Database Connection
 mongoose.connect(DBURL, {useNewUrlParser: true, useUnifiedTopology: true}, (err) =>{
@@ -24,6 +26,8 @@ app.use(express.static('public'));
 /////// sets view engine to jsx
 app.set('view engine', 'jsx');
 app.engine('jsx', require('express-react-views').createEngine());
+////// sets keyword for method override
+app.use(methodOverride('_method'));
 
 /////controllers
 app.use('/', notesController);

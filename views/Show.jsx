@@ -13,6 +13,7 @@ class Show extends React.Component{
                         <p>{note.title}</p>
                         <p>{note.body}</p>
                     </div>
+                    <a href={`/${note._id}/edit`}><button>Edit {note.title}</button></a><br/>
                     <a href="/"><button>Back</button></a>
                 </body>
             </Layout>

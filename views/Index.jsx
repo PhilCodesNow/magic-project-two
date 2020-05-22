@@ -17,7 +17,7 @@ class Index extends React.Component{
                                 <div>
                                     <a href={`/${note._id}`}><p>{note.title}</p></a>
                                     <p>{note.body}</p>
-                                    
+                                    <a href={`/${note._id}/edit`}></a>
                                 </div>
                             )
                         })
