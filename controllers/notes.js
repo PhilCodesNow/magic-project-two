@@ -2,19 +2,30 @@ const express = require('express');
 
 const notesController = express.Router();
 
-const Note = require('../models/notes.js');
+const Notes = require('../models/notes.js');
 
 
 ////// Routes
 
 ////// Index Route
 notesController.get('/', (req, res) =>{
-    res.render('Index');
+    Notes.find({}, (err, allNotes) =>{
+        res.render('Index', {
+            notes: allNotes
+        })
+    })
 })
 
 ////// New Route
 notesController.get('/new', (req, res) =>{
     res.render('New')
+})
+
+/////// Create Route
+notesController.post('/', (req, res) =>{
+    Notes.create(req.body, (err, newNote) =>{
+        res.redirect('/');
+    })
 })
 
 

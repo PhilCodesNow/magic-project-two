@@ -1,7 +1,10 @@
 //// Dependencies
 const express = require('express');
 const app = express();
+///// import mongoose
 const mongoose = require('mongoose');
+///// import notes model
+const Notes = require('./models/notes.js')
 const port = process.env.PORT || 3000;
 require('dotenv').config();
 const DBURL = process.env.MONGODB_URI;
