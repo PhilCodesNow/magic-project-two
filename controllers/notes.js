@@ -28,6 +28,13 @@ notesController.post('/', (req, res) =>{
     })
 })
 
+
+////// Delete Route
+notesController.delete('/:id', (req, res) =>{
+    Notes.findOneAndDelete({_id: req.params.id}, (err, note) =>{
+        res.redirect('/');
+    })
+})
 //////// Show Route
 notesController.get('/:id', (req, res) =>{
     Notes.findById({_id: req.params.id}, (err, note) =>{

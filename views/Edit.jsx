@@ -18,6 +18,11 @@ class Edit extends React.Component{
                         </form>
                     </div>
                     <a href="/"><button>Cancel</button></a>
+                    <div>
+                        <form action={`/${note._id}?_method=DELETE`} method="POST">
+                            <input type="submit" value="Delete"/>
+                        </form>
+                    </div>
                 </body>
             </Layout>
         )
