@@ -3,12 +3,12 @@ const Layout = require('./components/Layout.jsx');
 
 
 
-class Index extends React.Component{
+class New extends React.Component{
     render(){
         return(
             <Layout>
-                <h1>My Notes</h1>
-                <a href="/new"><button>New</button></a>
+                <h1>New</h1>
+                <a href="/"><button>back</button></a>
             </Layout>
         )
     }
@@ -18,4 +18,4 @@ class Index extends React.Component{
 
 
 
-module.exports = Index;
+module.exports = New;

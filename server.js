@@ -15,13 +15,20 @@ mongoose.connect(DBURL, {useNewUrlParser: true, useUnifiedTopology: true}, (err)
 ////// Middleware
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
-app.set('view_engine', 'jsx');
-app.engine('jsx', require('express-react-views').engine());
+app.set('view engine', 'jsx');
+app.engine('jsx', require('express-react-views').createEngine());
 
 
 ////// Routes
+
+////// Index Route
 app.get('/', (req, res) =>{
     res.render('Index');
+})
+
+////// New Route
+app.get('/new', (req, res) =>{
+    res.render('New')
 })
 //////Listener
 app.listen(port, ()=>{
