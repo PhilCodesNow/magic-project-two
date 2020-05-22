@@ -11,15 +11,20 @@ require('dotenv').config();
 const DBURL = process.env.MONGODB_URI;
 //////// Import controllers
 const notesController = require('./controllers/notes.js');
-// const usersController = require('./controllers/users.js')
+const userController = require('./controllers/users.js');
 ////// Import Method Override
 const methodOverride = require('method-override');
 //////// set bcrypt
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+////// require session
+const session = require('express-sessions');
+
+
 
 ////// Database Connection
-mongoose.connect(DBURL, {useNewUrlParser: true, useUnifiedTopology: true}, (err) =>{
-    console.log(err? err : 'connected')
+mongoose.connect(DBURL, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connection.once('open', () =>{
+    console.log('connected to mongo')
 })
 
 
@@ -33,9 +38,10 @@ app.engine('jsx', require('express-react-views').createEngine());
 ////// sets keyword for method override
 app.use(methodOverride('_method'));
 
+
 /////controllers
 app.use('/', notesController);
-// app.use('/users', usersController);
+app.use('/user', userController);
 
 
 
