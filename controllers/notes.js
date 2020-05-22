@@ -28,8 +28,14 @@ notesController.post('/', (req, res) =>{
     })
 })
 
-
-
+//////// Show Route
+notesController.get('/:id', (req, res) =>{
+    Notes.findById({_id: req.params.id}, (err, note) =>{
+        res.render('Show', {
+            note: note
+        })
+    })
+})
 
 
 module.exports = notesController;

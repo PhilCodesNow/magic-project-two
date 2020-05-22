@@ -15,8 +15,9 @@ class Index extends React.Component{
                         notes.map((note, index) =>{
                             return(
                                 <div>
-                                    <p>{note.title}</p>
+                                    <a href={`/${note._id}`}><p>{note.title}</p></a>
                                     <p>{note.body}</p>
+                                    
                                 </div>
                             )
                         })
