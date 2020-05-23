@@ -15,7 +15,7 @@ const userController = require('./controllers/users.js');
 ////// Import Method Override
 const methodOverride = require('method-override');
 /////// session
-const session = require('express-sessions');
+const session = require('express-session');
 //////// set bcrypt
 const bcrypt = require('bcrypt');
 const User = require('./models/users.js')
@@ -37,11 +37,13 @@ app.use(express.static('public'));
 app.set('view engine', 'jsx');
 app.engine('jsx', require('express-react-views').createEngine());
 ///// session config 
-// app.use(session({
-//     secret: process.env.SECRET,
-//     resave: false,
-//     saveUninitialized: false
-// }))
+app.use(
+    session({
+        secret: process.env.SECRET,
+        resave: false,
+        saveUninitialized: false,
+    })
+);
 ////// sets keyword for method override
 app.use(methodOverride('_method'));
 
@@ -54,8 +56,8 @@ app.use('/user', userController);
 
 
 ////// authorization routes
-app.get('/sessions/new', (req, res) =>{
-    res.render('sessions/new', {
+app.get('/sessions/New', (req, res) =>{
+    res.render('sessions/New', {
         currentUser: req.session.currentUser
     })
 })

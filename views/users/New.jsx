@@ -10,6 +10,7 @@ class NewUser extends React.Component {
                     password: <input type="password" name="password"/><br/>
                     <input type="submit" value="Create Account"/>
                 </form>
+                <a href="/"><button>Cancel</button></a>
             </div>
         )
     }
