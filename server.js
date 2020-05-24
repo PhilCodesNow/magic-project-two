@@ -82,13 +82,24 @@ app.post('/sessions/', (req, res) =>{
     })
 })
 
-/////// new note
-app.get('/sessions/:id/new', (req, res) =>{
-    res.render('users/New.jsx')
+/////// New Route
+app.get('/sessions/:id/newNote', (req, res) =>{
+    User.findOne({_id: req.params.id}, (err, foundUser) =>{
+        res.render('sessions/newNote.jsx', {
+            user: foundUser
+        })
+    })
+})
+
+//////// Create Route
+app.post('/sessions/:id/notes', (req, res) =>{
+    User.findOneAndUpdate({_id: req.params.id}, req.body, (err, data) =>{
+        res.redirect(`/sessions/${req.params.id}/notes`)
+    })
 })
 
 
-////// Show
+////// Index
 app.get('/sessions/:index/notes', (req, res) =>{
     User.findOne({_id: req.params.index}, (err, foundUser) =>{
         console.log(foundUser)
