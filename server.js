@@ -56,8 +56,8 @@ app.use('/user', userController);
 
 
 ////// authorization routes
-app.get('/sessions/New', (req, res) =>{
-    res.render('sessions/New', {
+app.get('/sessions/newSession', (req, res) =>{
+    res.render('sessions/newSession.jsx', {
         currentUser: req.session.currentUser
     })
 })
@@ -82,11 +82,17 @@ app.post('/sessions/', (req, res) =>{
     })
 })
 
+/////// new note
+app.get('/sessions/:id/new', (req, res) =>{
+    res.render('users/New.jsx')
+})
+
+
 ////// Show
 app.get('/sessions/:index/notes', (req, res) =>{
     User.findOne({_id: req.params.index}, (err, foundUser) =>{
         console.log(foundUser)
-        res.render('users/Show.jsx', {
+        res.render('sessions/Index.jsx', {
             user: foundUser
         })
     })
@@ -95,7 +101,7 @@ app.get('/sessions/:index/notes', (req, res) =>{
 
 app.delete('/sessions/', (req, res) =>{
     req.sessions.destroy(()=>{
-        res.redirect('/sessions/new')
+        res.redirect('/sessions/newSession')
     })
 })
 //////Listener

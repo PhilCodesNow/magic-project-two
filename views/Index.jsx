@@ -26,7 +26,7 @@ class Index extends React.Component{
                 
                     <a href="/new"><button>New Note</button></a><br/>
                     <a href="/user/new"><button>Create Account</button></a><br/>
-                    <a href="/sessions/new"><button>Log In</button></a>
+                    <a href="/sessions/newSession"><button>Log In</button></a>
                 </body>
             </Layout>
         )
