@@ -72,8 +72,9 @@ app.post('/sessions/', (req, res) =>{
             res.redirect('/user/new')
         }else{
             if(bcrypt.compareSync(req.body.password, foundUser.password)){
+                console.log(foundUser)
                 req.session.currentUser = foundUser.username
-                res.redirect('/')
+                res.redirect(`/sessions/${foundUser._id}/notes`)
             }else{
                 res.send('Wrong Password')
             }
@@ -81,6 +82,16 @@ app.post('/sessions/', (req, res) =>{
     })
 })
 
+////// Show
+app.get('/sessions/:index/notes', (req, res) =>{
+    User.findOne({_id: req.params.index}, (err, foundUser) =>{
+        console.log(foundUser)
+        res.render('users/Show.jsx', {
+            user: foundUser
+        })
+    })
+}
+)
 
 app.delete('/sessions/', (req, res) =>{
     req.sessions.destroy(()=>{
