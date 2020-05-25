@@ -7,15 +7,19 @@ class New extends React.Component{
     render(){
         return(
             <Layout>
-                <div>
+                <div className="text-center">
+                <h1>New Note</h1>
+                    <div className="jumbotron w-50 m-auto">
                     <form action="/" method="POST">
-                        <input type="text" name="title"/><br/>
-                        <input type="textarea" name="body"/><br/>
-                        <input type="submit" value="Create Note"/>
+                        <input className="form-group" type="text" name="title"/><br/>
+                        <input className="form-group" type="textarea" name="body"/><br/>
+                        <input className="form-group btn btn-success" type="submit" value="Create Note"/>
                     </form>
+                    </div>
+                
+                
+                <a href="/"><button className="btn btn-warning m-3">back</button></a>
                 </div>
-                <h1>New</h1>
-                <a href="/"><button>back</button></a>
             </Layout>
         )
     }
