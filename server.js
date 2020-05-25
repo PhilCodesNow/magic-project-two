@@ -91,9 +91,11 @@ app.get('/sessions/:id/newNote', (req, res) =>{
     })
 })
 
+
+
 //////// Create Route
 app.post('/sessions/:id/notes', (req, res) =>{
-    User.findOneAndUpdate({_id: req.params.id}, req.body, (err, data) =>{
+    User.update({_id: req.params.id}, {$push: {'notes': req.body.notes}}, (err, data) =>{
         res.redirect(`/sessions/${req.params.id}/notes`)
     })
 })
@@ -110,6 +112,18 @@ app.get('/sessions/:index/notes', (req, res) =>{
 }
 )
 
+////// delete user note
+app.post('/sessions/:id/:noteIndex/notes', (req, res) =>{
+    // User.findByIdAndUpdate({_id: req.params.id}, {$pull: {'notes': 'Testing again'}})
+
+    // User.update({_id: req.params.id},{$unset:{'notes.1':1}}
+
+    User.update({_id: req.params.id},{$pull:{'notes':'HELLO NOW'}})
+
+    res.redirect(`/sessions/${req.params.id}/notes`)
+})
+
+////// sessions delete
 app.delete('/sessions/', (req, res) =>{
     req.sessions.destroy(()=>{
         res.redirect('/sessions/newSession')

@@ -23,8 +23,4 @@ users.post('/', (req, res) =>{
 
 
 
-
-
-
-
 module.exports = users;

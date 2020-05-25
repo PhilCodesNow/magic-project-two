@@ -13,6 +13,17 @@ class userIndex extends React.Component{
                 
                 </div>
                 <a href={`/sessions/${user._id}/newNote`}><button>add note</button></a>
+                {user.notes.map((note, index) =>{
+                return(
+                <div>
+                    <p>{note}</p>
+                    <form action={`/sessions/${user._id}/${index}/notes`} method="POST">
+                        <input type="submit" value="delete"/>
+                    </form>
+                </div>
+                )
+                })}
+                <a href="/"><button>Logout</button></a>
             </body>
         )
     }
