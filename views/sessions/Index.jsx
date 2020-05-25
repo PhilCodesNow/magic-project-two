@@ -1,9 +1,12 @@
 const React = require('react')
+const Layout = require('../components/Layout.jsx');
+
 
 class userIndex extends React.Component{
     render(){
         const {user} = this.props
         return(
+            <Layout>
             <body>
                 <h1>{user.username}</h1>
                 <h1>this is users page (index)</h1>
@@ -25,6 +28,7 @@ class userIndex extends React.Component{
                 })}
                 <a href="/"><button>Logout</button></a>
             </body>
+            </Layout>
         )
     }
 }

@@ -8,25 +8,29 @@ class Index extends React.Component{
         const {notes} = this.props
         return(
             <Layout>
-                <body>
-                    <h1>My Notes</h1>
-                    <div>
+                <body className="viewsIndex">
+                    <h1 className="page-header">My Notes</h1>
+                    <div className="d-flex justify-content-center">
+                    <a href="/new"><button className="btn btn-success m-3">New Note</button></a>
+                    <a href="/user/new"><button className="btn btn-secondary m-3">Create Account</button></a>
+                    <a href="/sessions/newSession"><button className="btn btn-primary m-3">Log In</button></a>
+                    </div>
+                    
+                    <div className="list-group w-50">
                     {
                         notes.map((note, index) =>{
                             return(
-                                <div>
-                                    <a href={`/${note._id}`}><p>{note.title}</p></a>
-                                    <p>{note.body}</p>
-                                    <a href={`/${note._id}/edit`}></a>
-                                </div>
+                            <li className="list-group-item">
+                                <a href={`/${note._id}`}><h2>{note.title}</h2></a>
+                                <p>{note.body}</p>
+                                <a href={`/${note._id}/edit`}></a>
+                            </li>
                             )
                         })
                     }    
                     </div>
                 
-                    <a href="/new"><button>New Note</button></a><br/>
-                    <a href="/user/new"><button>Create Account</button></a><br/>
-                    <a href="/sessions/newSession"><button>Log In</button></a>
+
                 </body>
             </Layout>
         )

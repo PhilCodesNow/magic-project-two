@@ -1,8 +1,11 @@
 const React = require('react');
+const Layout = require('../components/Layout.jsx');
+
 
 class LoginUser extends React.Component {
     render(){
         return(
+            <Layout>
             <body>
                 <h1>User Login</h1>
                 <form action="/sessions/" method="POST">
@@ -12,6 +15,7 @@ class LoginUser extends React.Component {
                 </form>
                 <a href="/"><button>Cancel</button></a>
             </body>
+            </Layout>
         )
     }
 }

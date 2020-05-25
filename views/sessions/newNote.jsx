@@ -1,4 +1,5 @@
 const React = require('react');
+const Layout = require('../components/Layout.jsx');
 
 
 
@@ -6,6 +7,7 @@ class newNote extends React.Component{
     render(){
         const {user} = this.props
         return(
+            <Layout>
             <body>
                 <div>
                     <p>{user.username}, add a new note</p>
@@ -18,6 +20,7 @@ class newNote extends React.Component{
                 </div>
                 <a href={`/sessions/${user._id}/notes`}><button>back</button></a>
             </body>
+            </Layout>
         )
     }
 }
