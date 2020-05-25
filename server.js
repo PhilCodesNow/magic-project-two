@@ -112,6 +112,23 @@ app.get('/sessions/:index/notes', (req, res) =>{
 }
 )
 
+
+//////// Account Settings
+app.get('/sessions/:id/settings', (req, res) =>{
+    User.findOne({_id: req.params.id}, (err, foundUser) =>{
+        res.render(`sessions/accountSettings.jsx`, {
+            user: foundUser
+        })
+    })
+})
+/////// delete user
+app.delete('/sessions/:id/delete', (req, res) =>{
+    User.findOneAndRemove({_id: req.params.id}, (err, deleteUser) =>{
+        res.redirect('/')
+    })
+})
+
+
 ////// delete user note
 app.post('/sessions/:id/:noteIndex/notes', (req, res) =>{
     // User.findByIdAndUpdate({_id: req.params.id}, {$pull: {'notes': 'Testing again'}})

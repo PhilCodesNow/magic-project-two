@@ -11,7 +11,8 @@ class userIndex extends React.Component{
                 <h1>{user.username}'s Notes</h1>
                 <div className="d-flex justify-content-center">
                 <a href={`/sessions/${user._id}/newNote`}><button className="btn btn-success m-3">add note</button></a>
-                <a href="/"><button className="btn btn-secondary m-3">Logout</button></a>
+                <a href="/"><button className="btn btn-danger m-3">Logout</button></a>
+                <a href={`settings`}><button className="btn btn-secondary m-3">Account Settings</button></a>
                 </div>
 
                 <div className="jumbotron w-50 m-auto
