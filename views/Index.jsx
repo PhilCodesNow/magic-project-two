@@ -24,11 +24,10 @@ class Index extends React.Component{
                     {
                         notes.map((note, index) =>{
                             return(
-                            <li className="list-group-item">
-                                <a href={`/${note._id}`}><h2>{note.title}</h2></a>
-                                <p>{note.body}</p>
-                                <a href={`/${note._id}/edit`}></a>
-                            </li>
+                                <a className="list-group-item list-group-item-action list-group-item-warning" href={`/${note._id}`}>
+                                <h2>{note.title}</h2>
+                                {note.body}
+                                </a>
                             )
                         })
                     }    

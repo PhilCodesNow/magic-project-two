@@ -11,7 +11,7 @@ class Show extends React.Component{
                 <body className="viewsShow text-center">
                     <div>
                         <h2 className="m-3">{note.title}</h2>
-                        <p className="jumbotron w-50 p-2 m-auto">{note.body}</p>
+                        <p className="list-group-item list-group-item-warning w-50 m-auto">{note.body}</p>
                     </div>
                     <div className="d-flex justify-content-center">
                     <a href={`/${note._id}/edit`}><button className="btn btn-warning m-3">Edit</button></a><br/>
