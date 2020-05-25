@@ -16,8 +16,8 @@ users.post('/', (req, res) =>{
     console.log(req.body)
 
     User.create(req.body, (err, createdUser) =>{
-        console.log(createdUser)
-        res.redirect('/')
+        console.log(createdUser._id)
+        res.redirect(`/sessions/${createdUser._id}/notes`)
     })
 })
 
