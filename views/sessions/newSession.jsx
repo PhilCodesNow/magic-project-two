@@ -12,7 +12,7 @@ class LoginUser extends React.Component {
                 <form action="/sessions/" method="POST">
                     username: <input className="form-group" type="text" name="username"/><br/>
                     password: <input className="form-group" type="password" name="password"/><br/>
-                    <input className="btn btn-sucess" type="submit" value="Login"/>
+                    <input className="btn btn-success" type="submit" value="Login"/>
                 </form>
                 </div>
                 <a href="/"><button className="btn btn-warning m-3">Cancel</button></a>

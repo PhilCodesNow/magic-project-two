@@ -24,7 +24,7 @@ class Index extends React.Component{
                     {
                         notes.map((note, index) =>{
                             return(
-                                <a className="list-group-item list-group-item-action list-group-item-warning" href={`/${note._id}`}>
+                                <a className="list-group-item list-group-item-action list-group-item-warning fonts" href={`/${note._id}`}>
                                 <h2>{note.title}</h2>
                                 {note.body}
                                 </a>

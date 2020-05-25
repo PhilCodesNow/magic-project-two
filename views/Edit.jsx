@@ -12,8 +12,8 @@ class Edit extends React.Component{
                     <h1>Edit</h1>
                     <div className="jumbotron w-50 m-auto p-3">
                         <form action={`/${note._id}/edit?_method=PUT`} method="POST">
-                            <input className="form-group" type="text" name="title" value={note.title}/><br/>
-                            <input className="form-group" type="textarea" name="body" value={note.body}/><br/>
+                            <input className="form-group textTitleClass" type="text" name="title" value={note.title}/><br/>
+                            <textarea className="form-group textAreaClass" name="body" value={note.body}/><br/>
                             <input className="btn btn-primary m-3" type="submit" value="Edit Note"/>
                         </form>
                     </div>

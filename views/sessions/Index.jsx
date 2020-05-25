@@ -18,7 +18,7 @@ class userIndex extends React.Component{
                 p-0 list-group">
                 {user.notes.map((note, index) =>{
                 return(
-                <a className="list-group-item list-group-item-action list-group-item-warning" href="#">
+                <a className="list-group-item list-group-item-action list-group-item-warning fonts" href="#">
                     <p>{note}</p>
                     <form action={`/sessions/${user._id}/${index}/notes`} method="POST">
                         <input className="btn btn-danger" type="submit" value="delete"/>

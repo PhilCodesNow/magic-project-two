@@ -14,7 +14,7 @@ class newNote extends React.Component{
                 </div>
                 <div className="jumbotron w-50 m-auto">
                     <form action={`/sessions/${user._id}/notes`} method="POST">
-                        <input className="form-group" type="text" name="notes"/>
+                        <textarea className="form-group textAreaClass" name="notes"/><br/>
                         <input className="btn btn-success m-3" type="submit" value="Post Note"/>
                     </form>
                 </div>

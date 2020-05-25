@@ -129,6 +129,13 @@ app.delete('/sessions/', (req, res) =>{
         res.redirect('/sessions/newSession')
     })
 })
+
+
+/////// Show Route
+app.post('/sessions/:id/show', (req, res) =>{
+    User.findOne({_id: req.params.id})
+    res.render('sessions/Show.jsx')
+})
 //////Listener
 app.listen(port, ()=>{
     console.log('listening on port ' + port)

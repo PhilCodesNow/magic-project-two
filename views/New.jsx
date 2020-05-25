@@ -11,8 +11,8 @@ class New extends React.Component{
                 <h1>New Note</h1>
                     <div className="jumbotron w-50 m-auto">
                     <form action="/" method="POST">
-                        <input className="form-group" type="text" name="title"/><br/>
-                        <input className="form-group" type="textarea" name="body"/><br/>
+                        <input className="form-group textTitleClass" type="text" name="title"/><br/>
+                        <textarea className="form-group textAreaClass" name="body"/><br/>
                         <input className="form-group btn btn-success" type="submit" value="Create Note"/>
                     </form>
                     </div>
