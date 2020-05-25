@@ -56,7 +56,7 @@ notesController.get('/:id/edit', (req, res) =>{
 /////// Update Route
 notesController.put('/:id/edit', (req, res) =>{
     Notes.findByIdAndUpdate(req.params.id, req.body, (err, data) =>{
-        res.redirect('/');
+        res.redirect(`/${req.params.id}`);
     })
 })
 

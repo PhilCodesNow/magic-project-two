@@ -8,19 +8,20 @@ class Edit extends React.Component{
         const {note} = this.props;
         return(
             <Layout>
-                <body className="viewsEdit">
+                <body className="viewsEdit text-center">
                     <h1>Edit</h1>
-                    <div>
+                    <div className="jumbotron w-50 m-auto p-3">
                         <form action={`/${note._id}/edit?_method=PUT`} method="POST">
-                            <input type="text" name="title" value={note.title}/><br/>
-                            <input type="textarea" name="body" value={note.body}/><br/>
-                            <input type="submit" value="Edit Note"/>
+                            <input className="form-group" type="text" name="title" value={note.title}/><br/>
+                            <input className="form-group" type="textarea" name="body" value={note.body}/><br/>
+                            <input className="btn btn-primary m-3" type="submit" value="Edit Note"/>
                         </form>
                     </div>
-                    <a href="/"><button>Cancel</button></a>
-                    <div>
+
+                    <div className="d-flex justify-content-center">
+                        <a href={`/${note._id}`}><button className="btn btn-warning m-3">Cancel</button></a>
                         <form action={`/${note._id}?_method=DELETE`} method="POST">
-                            <input type="submit" value="Delete"/>
+                            <input className="btn btn-danger m-3" type="submit" value="Delete"/>
                         </form>
                     </div>
                 </body>
