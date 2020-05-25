@@ -15,15 +15,15 @@ class userIndex extends React.Component{
                 </div>
 
                 <div className="jumbotron w-50 m-auto
-                p-3">
+                p-0 list-group">
                 {user.notes.map((note, index) =>{
                 return(
-                <div>
+                <li className="list-group-item">
                     <p>{note}</p>
                     <form action={`/sessions/${user._id}/${index}/notes`} method="POST">
-                        <input type="submit" value="delete"/>
+                        <input className="btn btn-danger" type="submit" value="delete"/>
                     </form>
-                </div>
+                </li>
                 )
                 })}
                 </div>

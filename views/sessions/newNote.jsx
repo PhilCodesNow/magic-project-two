@@ -8,17 +8,17 @@ class newNote extends React.Component{
         const {user} = this.props
         return(
             <Layout>
-            <body>
+            <body className="text-center">
                 <div>
-                    <p>{user.username}, add a new note</p>
+                    <h2>{user.username}, add a new note</h2>
                 </div>
-                <div>
+                <div className="jumbotron w-50 m-auto">
                     <form action={`/sessions/${user._id}/notes`} method="POST">
-                        <input type="text" name="notes"/>
-                        <input type="submit" value="Post Note"/>
+                        <input className="form-group" type="text" name="notes"/>
+                        <input className="btn btn-success m-3" type="submit" value="Post Note"/>
                     </form>
                 </div>
-                <a href={`/sessions/${user._id}/notes`}><button>back</button></a>
+                <a href={`/sessions/${user._id}/notes`}><button className="btn btn-warning m-3">back</button></a>
             </body>
             </Layout>
         )
