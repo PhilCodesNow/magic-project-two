@@ -7,15 +7,15 @@ class userIndex extends React.Component{
         const {user} = this.props
         return(
             <Layout>
-            <body>
-                <h1>{user.username}</h1>
-                <h1>this is users page (index)</h1>
-                <div>
-                
-                
-                
+            <body className="text-center">
+                <h1>{user.username}'s Notes</h1>
+                <div className="d-flex justify-content-center">
+                <a href={`/sessions/${user._id}/newNote`}><button className="btn btn-success m-3">add note</button></a>
+                <a href="/"><button className="btn btn-secondary m-3">Logout</button></a>
                 </div>
-                <a href={`/sessions/${user._id}/newNote`}><button>add note</button></a>
+
+                <div className="jumbotron w-50 m-auto
+                p-3">
                 {user.notes.map((note, index) =>{
                 return(
                 <div>
@@ -26,7 +26,8 @@ class userIndex extends React.Component{
                 </div>
                 )
                 })}
-                <a href="/"><button>Logout</button></a>
+                </div>
+                
             </body>
             </Layout>
         )

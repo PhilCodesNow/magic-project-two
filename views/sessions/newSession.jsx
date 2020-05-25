@@ -6,7 +6,7 @@ class LoginUser extends React.Component {
     render(){
         return(
             <Layout>
-            <body className="newSession text-center">
+            <body className="text-center">
                 <h1>User Login</h1>
                 <div className="jumbotron w-50 m-auto p-2">
                 <form action="/sessions/" method="POST">
