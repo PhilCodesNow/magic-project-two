@@ -8,7 +8,7 @@ class Edit extends React.Component{
         const {note} = this.props;
         return(
             <Layout>
-                <body>
+                <body className="viewsEdit">
                     <h1>Edit</h1>
                     <div>
                         <form action={`/${note._id}/edit?_method=PUT`} method="POST">

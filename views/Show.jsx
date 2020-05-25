@@ -8,13 +8,15 @@ class Show extends React.Component{
         const {note} = this.props;
         return(
             <Layout>
-                <body>
+                <body className="viewsShow text-center">
                     <div>
-                        <p>{note.title}</p>
-                        <p>{note.body}</p>
+                        <h2 className="m-3">{note.title}</h2>
+                        <p className="jumbotron w-50 p-2 m-auto">{note.body}</p>
                     </div>
-                    <a href={`/${note._id}/edit`}><button>Edit {note.title}</button></a><br/>
-                    <a href="/"><button>Back</button></a>
+                    <div className="d-flex justify-content-center">
+                    <a href={`/${note._id}/edit`}><button className="btn btn-warning m-3">Edit</button></a><br/>
+                    <a href="/"><button className="btn btn-success m-3">Back</button></a>
+                    </div>
                 </body>
             </Layout>
         )

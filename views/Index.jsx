@@ -15,8 +15,12 @@ class Index extends React.Component{
                     <a href="/user/new"><button className="btn btn-secondary m-3">Create Account</button></a>
                     <a href="/sessions/newSession"><button className="btn btn-primary m-3">Log In</button></a>
                     </div>
-                    
-                    <div className="list-group w-50">
+
+
+                    <button type="button" class="btn btn-lg btn-danger mb-3" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+
+
+                    <div className="list-group w-50 m-auto">
                     {
                         notes.map((note, index) =>{
                             return(
