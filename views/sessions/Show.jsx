@@ -11,7 +11,6 @@ class userShow extends React.Component{
                 <div className="jumbotron mt-4 p-5">
                 <h1>{user.notes[index]}</h1>
                 <h1>this is users page</h1>
-                
 
                 </div>
                 <a href={`/sessions/${user._id}/notes`}><button className="btn btn-success m-3">Back</button></a>
