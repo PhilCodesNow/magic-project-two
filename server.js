@@ -85,6 +85,7 @@ app.post('/sessions/', (req, res) =>{
 /////// New Route
 app.get('/sessions/:id/newNote', (req, res) =>{
     User.findOne({_id: req.params.id}, (err, foundUser) =>{
+        console.log('FOUND DA USERRRRRRRR ' + foundUser)
         res.render('sessions/newNote.jsx', {
             user: foundUser
         })
@@ -143,16 +144,6 @@ app.delete('/sessions/:id/delete', (req, res) =>{
 
 ////// delete user note
 app.post('/sessions/:id/:noteIndex/delete', (req, res) =>{
-    // User.findByIdAndUpdate({_id: req.params.id}, {$pull: {'notes': 'Testing again'}})
-
-    // User.update({_id: req.params.id},{$unset:{'notes.1':1}}
-    // User.find({_id: req.params.id}, (err, foundNote) =>{
-    //     User.update({_id: req.params.id},{$pull:{'notes': foundNote[req.params.noteIndex]}}, (err, data) =>{
-    //         console.log('notes are ' + foundNote)
-    //         res.redirect(`/sessions/${req.params.id}/notes`)
-    //     })
-    // })
-
     User.findById({_id: req.params.id}, (err, foundNote) =>{
         User.update({_id: req.params.id}, {$pull: {'notes': foundNote.notes[req.params.noteIndex]}}, (err, date) =>{
             console.log('INDEXXXXXXXXXXXXXXX  = ' + req.params.noteIndex)
@@ -161,6 +152,16 @@ app.post('/sessions/:id/:noteIndex/delete', (req, res) =>{
         })
     })
 })
+
+////// Edit Note Route
+app.get('/sessions/:id/:noteIndex/edit', (req, res) =>{
+    User.findById({_id: req.params.id}, (err, note) =>{
+        res.render('sessions/editNote.jsx', {
+            note: note
+        })
+    })
+})
+
 
 
 ////// sessions delete
