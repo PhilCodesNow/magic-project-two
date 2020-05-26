@@ -113,6 +113,16 @@ app.get('/sessions/:index/notes', (req, res) =>{
 )
 
 
+/////// Show Note
+app.get('/sessions/:id/:index/show', (req, res) =>{
+    User.findOne({_id: req.params.id}, (err, foundUser) =>{
+        res.render('sessions/Show.jsx', {
+            user: foundUser, 
+            index: req.params.index
+        })
+    })
+})
+
 //////// Account Settings
 app.get('/sessions/:id/settings', (req, res) =>{
     User.findOne({_id: req.params.id}, (err, foundUser) =>{
@@ -121,6 +131,8 @@ app.get('/sessions/:id/settings', (req, res) =>{
         })
     })
 })
+
+
 /////// delete user
 app.delete('/sessions/:id/delete', (req, res) =>{
     User.findOneAndRemove({_id: req.params.id}, (err, deleteUser) =>{
@@ -130,7 +142,7 @@ app.delete('/sessions/:id/delete', (req, res) =>{
 
 
 ////// delete user note
-app.post('/sessions/:id/:noteIndex/notes', (req, res) =>{
+app.post('/sessions/:id/:noteIndex/delete', (req, res) =>{
     // User.findByIdAndUpdate({_id: req.params.id}, {$pull: {'notes': 'Testing again'}})
 
     // User.update({_id: req.params.id},{$unset:{'notes.1':1}}
