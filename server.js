@@ -117,6 +117,7 @@ app.get('/sessions/:index/notes', (req, res) =>{
 /////// Show Note
 app.get('/sessions/:id/:index/show', (req, res) =>{
     User.findOne({_id: req.params.id}, (err, foundUser) =>{
+        console.log(foundUser)
         res.render('sessions/Show.jsx', {
             user: foundUser, 
             index: req.params.index
@@ -146,23 +147,41 @@ app.delete('/sessions/:id/delete', (req, res) =>{
 app.post('/sessions/:id/:noteIndex/delete', (req, res) =>{
     User.findById({_id: req.params.id}, (err, foundNote) =>{
         User.update({_id: req.params.id}, {$pull: {'notes': foundNote.notes[req.params.noteIndex]}}, (err, date) =>{
-            console.log('INDEXXXXXXXXXXXXXXX  = ' + req.params.noteIndex)
             res.redirect(`/sessions/${req.params.id}/notes`)
 
         })
     })
 })
 
+
 ////// Edit Note Route
 app.get('/sessions/:id/:noteIndex/edit', (req, res) =>{
     User.findById({_id: req.params.id}, (err, note) =>{
         res.render('sessions/editNote.jsx', {
-            note: note
+            note: note, 
+            index: req.params.noteIndex
         })
     })
 })
 
 
+//////// Update note Route
+app.put('/sessions/:id/:noteIndex/edit', (req, res) =>{
+        User.findById({_id: req.params.id}, (err, foundNote) =>{
+            User.update({_id: req.params.id}, {$pull: {'notes': foundNote.notes[req.params.noteIndex]}}, (err, date) =>{
+                User.findByIdAndUpdate({_id: req.params.id}, {$push: {'notes': {$each: [req.body.notes], $position: req.params.noteIndex}}}, (err, newNote) =>{
+                    console.log('hellloooooooooooooo ' + req.body.notes)
+                    res.redirect(`/sessions/${req.params.id}/${req.params.noteIndex}/show`)
+                })
+            })
+        })
+})
+
+
+// User.findByIdAndUpdate({_id: req.params.id}, {$pull:{'notes': req.body}})
+
+// })
+// res.redirect(`/sessions/${req.params.id}/${req.params.noteIndex}/show`)
 
 ////// sessions delete
 app.delete('/sessions/', (req, res) =>{
@@ -172,11 +191,7 @@ app.delete('/sessions/', (req, res) =>{
 })
 
 
-/////// Show Route
-app.post('/sessions/:id/show', (req, res) =>{
-    User.findOne({_id: req.params.id})
-    res.render('sessions/Show.jsx')
-})
+
 //////Listener
 app.listen(port, ()=>{
     console.log('listening on port ' + port)

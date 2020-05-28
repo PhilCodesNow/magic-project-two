@@ -21,7 +21,6 @@ class userIndex extends React.Component{
                 return(
                 <a className="list-group-item list-group-item-action list-group-item-warning fonts lgi" href={`/sessions/${user._id}/${index}/show`}>
                     <p>{note}</p>
-                    
                 </a>
                 )
                 })}
