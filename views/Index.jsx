@@ -17,7 +17,7 @@ class Index extends React.Component{
             </div>
 
 
-            <button type="button" class="btn btn-lg btn-danger mb-3" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+            {/* <button type="button" class="btn btn-lg btn-danger mb-3" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button> */}
 
 
             <div className="list-group w-50 m-auto">
